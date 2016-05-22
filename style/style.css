@@ -1,0 +1,275 @@
+@font-face {
+    font-family: game;
+    src: url('font/nasal.ttf');
+}
+
+* {
+	margin: 0;
+	font-family: game;
+	padding: 0;
+}
+
+header {
+	background-color: #a12283;
+	font-size: 2em;
+	color: white;
+	padding: 10px;
+}
+
+footer {
+	font-family: tahoma;
+	position: fixed;
+	bottom: 0;
+	font-size: 0.7em;
+}
+
+footer * {
+	font-family: tahoma;
+}
+
+#pwd {
+	color: #DAD22E;
+}
+
+#home-icon {
+	font-size: 0.7em;
+}
+#home-icon:hover {
+	color: black;
+	cursor: pointer;
+}
+
+ul#games {
+	display: inline-block;
+	list-style-type: none;
+	position: absolute;
+	right: 50px;
+	top: 0;
+	color: #54BC28;
+	cursor: pointer;
+}
+	#games li {
+		display: inline-block;
+	}
+	#games li:not(:first-child) {
+		display: none;
+		color: #DAB42E;
+	}
+	#games:hover li:not(:first-child):hover {
+		color: #33075F;
+	}
+	#games:hover li:first-child {
+		color: #B6E050;
+	}
+
+#main-container {
+	margin: auto;
+	text-align: center;
+	margin-top: 100px;
+	font-size: 2.1em;
+	width: 850px;
+}
+	.game-block {
+		display: inline-block;
+		cursor: pointer;
+		width: 250px;
+		margin-left: 10px;
+		margin-top: 25px;
+		position: relative;
+	}
+		.game-block img {
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.game-image-container {
+			position: relative;
+			width: 250px;
+			height: 250px;
+		}
+		.game-block:hover .game-image-container:after {
+			content: '';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: rgb(37, 175, 37);
+			opacity: 0.15;
+			top: 0;
+			left: 0;
+		}
+	.game-block:hover {
+		color: #88000D;
+	}
+	.game-block:after {
+		content: attr(data-onlines) ' On';
+		border-radius: 50%;
+		background-color: rgba(218, 164, 46, 0.8);
+		position: absolute;
+		top: 31%;
+		left: 35.5%;
+		display: none;
+		width: 75px;
+		height: 50px;
+		padding-top: 25px;
+		color: white;
+		font-size: 0.9em;
+	} 
+	.game-block:hover:after {
+		display: initial;
+	}
+
+#chess table{
+	display: inline-block;
+	margin: auto;
+	border-collapse: collapse;
+	border: 1px solid #000;
+	width: 400px;
+	height: 400px;
+}
+	#chess table tr{
+		border-collapse: collapse;
+	}
+	#chess table tr td {
+		width: 50px;
+		height: 50px;
+	}
+	#chess table tr:nth-child(2n+1) td:nth-child(2n+1){
+		background-color: #D59330;
+	}
+	#chess table tr:nth-child(2n) td:nth-child(2n){
+		background-color: #D59330;
+	}
+	#chess table tr:nth-child(2n+1) td:nth-child(2n){
+		background-color: #A15C21;
+	}
+	#chess table tr:nth-child(2n) td:nth-child(2n+1){
+		background-color: #A15C21;
+	}
+
+[data-chessmancolor=white] {
+	color: white;
+}
+[data-chessmancolor=black] {
+	color: black;
+}
+	#chess #white-chessman-panel, #chess #black-chessman-panel {
+		display: inline-block;
+		width: 100px;
+		height: 402px;
+		margin: 0 10px;
+		vertical-align: top;
+	}
+
+	#chess #white-chessman-panel{
+		color: white;
+		background-color: #D59330;
+	}
+
+	#chess #black-chessman-panel{
+		color: white;
+		background-color: #A15C21;
+	}
+
+	#chess-info {
+		margin-bottom: 5px;
+	}
+
+	#chess-info .score {
+		font-family: tahoma;
+		font-size: 0.5em;
+		display: inline-block;
+	}
+
+	#turn {
+		width: 150px;
+		border: 1px solid #000;
+		margin: auto;
+		margin-bottom: 5px;
+		font-size: 0.7em;
+		display: inline-block;
+		margin: 0 10px;
+	}
+	#turn.white {
+		background-color: #fff; 
+		color: #000;
+	}
+	#turn.black {
+		background-color: #000; 
+		color: #fff;
+	}
+
+
+
+/*Sudoku
+Css*/
+
+#sudoku table {
+	border-collapse: collapse;
+	background-color:#FFFFFF; 
+	color:#000000; 
+	border-collapse:collapse;
+	margin-left:auto; 
+	margin-right:auto; 
+	margin-bottom:7px; 
+}
+	#sudoku table td { 
+		text-align:center; 
+		border: 1px dotted #000;
+		width: 30px; 
+		height:30px;
+		font-size: 0.75em;
+	}
+
+	/* preset fields */
+	#sudoku table tr td[contenteditable=false] {
+		background-color: #DFFFDF; /* IE fallback color */
+		background-color: rgba(0, 192, 0, 0.10); /* #00c000 10%  */
+		width: 30px;
+		height:30px;
+	}
+
+	/*borders*/ 
+	#sudoku table tr:first-child td {
+		border-top: 3px black solid;
+	}
+	#sudoku table tr:last-child td {
+		border-bottom: 3px black solid;
+	}
+	#sudoku table tr td:first-child {
+		border-left: 3px black solid;
+	}
+	#sudoku table tr td:last-child {
+		border-right: 3px black solid;
+	}
+	#sudoku table tr td:nth-child(3),
+	#sudoku table tr td:nth-child(6) {
+		border-right: 2px black solid;
+	}
+	#sudoku table tr:nth-child(3) td,
+	#sudoku table tr:nth-child(6) td {
+		border-bottom: 2px black solid;
+	}
+
+#check-sudoku,
+#submit-sudoku {
+	font-size: 0.5em;
+	font-family: tahoma;
+	display: inline-block;
+	border-radius: 10px;
+	background-color: #fff;
+	padding: 5px;
+	cursor: pointer;
+	border: 1px solid #000;
+	margin-right: 10px;
+}
+#check-sudoku:hover,
+#submit-sudoku:hover {
+	background: green;
+	color: white;
+}
+
+@media screen and (max-width: 850px) {
+	ul#games {
+		display: none;
+	}
+}

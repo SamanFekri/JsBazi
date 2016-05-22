@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>IE Game Station</title>
+		<link rel="stylesheet" type="text/css" href="../style/style.css">
+		<script src="../js/jquery-2.2.3.min.js"></script>
+		<script src="../js/home.js"></script>
+		<script src="../js/chess.js"></script>
+		<script src="../js/sudoku.js"></script>
+	</head>
+	<body>
+		<header>
+			GAME station: <span id="pwd">Home</span><span id="home-icon"> &#127968;</span>
+			<ul id="games">
+				<li>&#127918;</li>
+			</ul>
+		</header>
+		<div id="main-container">
+			<div class="game-block" id="sudoku-block" data-onlines="7" data-name="sudoku">
+				<div class="game-image-container">
+					<img src="http://ie.ce-it.ir/hw3/images/sudoku.png" alt="">
+				</div>
+				<p>Play Sudoku!</p>
+			</div>
+			<div class="game-block" id="chess-block" data-onlines="3" data-name="chess">
+				<div class="game-image-container">
+					<img src="http://ie.ce-it.ir/hw3/images/chess.jpg" alt="">
+				</div>
+				<p>Play Chess!</p>
+			</div>
+			<div class="game-block" id="snake-block" data-onlines="0" data-name="snake">
+				<div class="game-image-container">
+					<img src="http://ie.ce-it.ir/hw3/images/snake.jpg" alt="">
+				</div>
+				<p>Play Snake!</p>
+			</div>
+		</div>
+		<footer>
+			Designer: Seyyed Ehsan Mokhtari (<a href="http://mokhi.ir">Mokhi</a>) <br> &copy; 1395 - IE course JS project
+		</footer>
+	</body>
+</html>
