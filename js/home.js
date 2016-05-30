@@ -6,7 +6,7 @@ var menuState;
 window.onload = function (){
     var tmp;
     synchronousAjax(homedir,analyze);
-    state = "home";
+    state = 0; // 0 -> home; else number of each element (1 -> soduku and 2 -> chess)
     menuState = 0; // 0 is close 1 is open
 
     var pwd = document.getElementById("pwd");
@@ -39,17 +39,20 @@ window.onload = function (){
     console.log(hgame.innerHTML);
 
     //hgame_lis[0].style.color = gameicon.getAttribute('color');
+    // set color and hover in menu
     setItemColor(hgame_lis[0],gameicon.getAttribute('color'));
     setOnhoverColor(hgame_lis[0],gameicon.getAttribute('hover'));
-    // list of li
-    //set image icon click
     for (var i = 0; i < hgame_lis.length; i++){
-        hgame_lis[i].onclick = changeMenu;
         if(i > 0){
             setItemColor(hgame_lis[i],gamesAttr.getAttribute('color'));
             setOnhoverColor(hgame_lis[i],gamesAttr.getAttribute('hover'));
         }
     }
+    //set gameicon click
+    hgame_lis[0].onclick = changeMenu;
+    
+    // list of li click
+
     
 }
 
@@ -78,11 +81,7 @@ function changeMenu(){
         menuState = 0;
     }else{
         for(var i = 0; i <menu_items.length; i++){
-            if(i == 0){
-                menu_items[i].style.display="none";
-            } else{
-                menu_items[i].style.display="inline-block";
-            }
+            menu_items[i].style.display="inline-block";
         }
         menuState = 1;
     }
