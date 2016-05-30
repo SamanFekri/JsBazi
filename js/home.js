@@ -6,7 +6,7 @@ var menuState;
 window.onload = function (){
     var tmp;
     synchronousAjax(homedir,analyze);
-    state = 0; // 0 -> home; else number of each element (1 -> soduku and 2 -> chess)
+    state = "home";
     menuState = 0; // 0 is close 1 is open
 
     var pwd = document.getElementById("pwd");
@@ -50,23 +50,15 @@ window.onload = function (){
     }
     //set gameicon click
     hgame_lis[0].onclick = changeMenu;
-    
     // list of li click
 
-    
+    //initial
+    var main_container = document.getElementById("main-container");
+    main_container.innerHTML = '<div class="game-block" id="chess-block" data-onlines="3"> <div class="game-image-container"> <img src="./chess-match.jpg" alt=""> </div> <p>Play Chess!</p> </div>';
 }
 
-function setItemColor(item,color){
-    item.style.color = color;
-}
-function setOnhoverColor(item,color){
-    var sColor = item.style.color;
-    item.onmouseover = function () {
-        item.style.color = color;
-    }
-    item.onmouseout = function () {
-        item.style.color = sColor;
-    }
+function controller() {
+
 }
 function changeMenu(){
     var menu_items = document.getElementById("games").getElementsByTagName('li');
@@ -84,6 +76,18 @@ function changeMenu(){
             menu_items[i].style.display="inline-block";
         }
         menuState = 1;
+    }
+}
+function setItemColor(item,color){
+    item.style.color = color;
+}
+function setOnhoverColor(item,color){
+    var sColor = item.style.color;
+    item.onmouseover = function () {
+        item.style.color = color;
+    }
+    item.onmouseout = function () {
+        item.style.color = sColor;
     }
 }
 function synchronousAjax(url,process){
