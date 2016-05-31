@@ -56,7 +56,15 @@ window.onload = function (){
     hgame_lis[0].onclick = changeMenu;
 
     //initial
+    var home_icon = document.getElementById('home-icon');
+    setGameOnClick(home_icon,'home');
+    makeHome();
 
+}
+
+
+function makeHome(){
+    document.getElementById('home-icon').style.display="none";
     var main_container = document.getElementById("main-container");
     var max = 0;
     var maxOnlineIndex = 0;
@@ -66,9 +74,9 @@ window.onload = function (){
             'id="'+ game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue+'-block" ' +
             'data-onlines="'+game_list[i].getElementsByTagName('onlines')[0].childNodes[0].nodeValue+'">' +
             '<div class="game-image-container">' +
-                '<img src="'+game_list[i].getElementsByTagName('image')[0].childNodes[0].nodeValue+'"/>' +
+            '<img src="'+game_list[i].getElementsByTagName('image')[0].childNodes[0].nodeValue+'"/>' +
             '</div>' +
-            '<p>Play '+game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue+'!</p>';
+            '<p>'+game_list[i].getElementsByTagName('text')[0].childNodes[0].nodeValue+'</p>';
         if(max < game_list[i].getElementsByTagName('onlines')[0].childNodes[0].nodeValue){
             max = game_list[i].getElementsByTagName('onlines')[0].childNodes[0].nodeValue;
             maxOnlineIndex = i;
@@ -89,7 +97,6 @@ window.onload = function (){
         setOnhoverColor(gBlock.getElementsByTagName('p')[0],game_list[i].getElementsByTagName('text')[0].getAttribute('hover'));
         setGameOnClick(gBlock,gName);
     }
-
 }
 
 function setGameOnClick(item, name) {
@@ -98,8 +105,32 @@ function setGameOnClick(item, name) {
     };
 }
 function controller(newState) {
-    state = newState;
-    console.log("selected : " + state)
+    if(state.localeCompare(newState) != 0){
+        state = newState;
+        console.log("selected : " + state);
+        var dir = document.getElementById('pwd');
+        dir.innerHTML = state;
+        if("home".localeCompare(state) == 0){
+            makeHome();
+        }else{
+            document.getElementById('home-icon').style.display="inline-block";
+            // for games not implemented
+            for (var i = 0; i < game_list.length; i++){
+                if("true".localeCompare(game_list[i].getAttribute('active')) != 0
+                    && state.localeCompare(game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue) == 0){
+                    var main_container = document.getElementById("main-container");
+                    main_container.innerHTML = "<p>This game is not implemented yet!</p>";
+                    return ;
+                }
+            }
+            // games implemented
+            if("chess".localeCompare(state) == 0){
+
+            }else if("sudoku" .localeCompare(state) == 0){
+
+            }
+        }
+    }
 }
 function changeMenu(){
     var menu_items = document.getElementById("games").getElementsByTagName('li');
@@ -131,12 +162,6 @@ function setOnhoverColor(item,color){
         item.style.color = sColor;
     }
 }
-function synchronousAjax(url,process){
-    var xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange = process;
-    xmlhttp.open("GET",url,false);
-    xmlhttp.send(null);
-}
 function analyze(){
     if(this.readyState == 4){
         if(this.status == 200){
@@ -148,6 +173,13 @@ function analyze(){
             window.alert("Error: "+ this.statusText);
         }
     }
+}
+// synchronus ajax
+function synchronousAjax(url,process){
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange = process;
+    xmlhttp.open("GET",url,false);
+    xmlhttp.send(null);
 }
 function parser(inputXml) {
     var parser = new DOMParser();
