@@ -3,6 +3,8 @@ var resultOfHomeAjax;
 var DOMOfHomeXml;
 var state;
 var menuState;
+var games_item;
+var game_list;
 window.onload = function (){
     var tmp;
     synchronousAjax(homedir,analyze);
@@ -25,8 +27,8 @@ window.onload = function (){
     var hgame = document.getElementById("games");
     var hgame_lis = hgame.getElementsByTagName("li");
 
-    var games_item = DOMOfHomeXml.getElementsByTagName("games")[0];
-    var game_list = games_item.getElementsByTagName("game");
+    games_item = DOMOfHomeXml.getElementsByTagName("games")[0];
+    game_list = games_item.getElementsByTagName("game");
     console.log("list of games");
     console.log(game_list);
 
@@ -46,19 +48,58 @@ window.onload = function (){
         if(i > 0){
             setItemColor(hgame_lis[i],gamesAttr.getAttribute('color'));
             setOnhoverColor(hgame_lis[i],gamesAttr.getAttribute('hover'));
+            // list of li click
+            setGameOnClick(hgame_lis[i],hgame_lis[i].innerHTML);
         }
     }
     //set gameicon click
     hgame_lis[0].onclick = changeMenu;
-    // list of li click
 
     //initial
+
     var main_container = document.getElementById("main-container");
-    main_container.innerHTML = '<div class="game-block" id="chess-block" data-onlines="3"> <div class="game-image-container"> <img src="./chess-match.jpg" alt=""> </div> <p>Play Chess!</p> </div>';
+    var max = 0;
+    var maxOnlineIndex = 0;
+    main_container.innerHTML = "";
+    for (var i=0; i < game_list.length; i++){
+        main_container.innerHTML += '<div class="game-block" ' +
+            'id="'+ game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue+'-block" ' +
+            'data-onlines="'+game_list[i].getElementsByTagName('onlines')[0].childNodes[0].nodeValue+'">' +
+            '<div class="game-image-container">' +
+                '<img src="'+game_list[i].getElementsByTagName('image')[0].childNodes[0].nodeValue+'"/>' +
+            '</div>' +
+            '<p>Play '+game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue+'!</p>';
+        if(max < game_list[i].getElementsByTagName('onlines')[0].childNodes[0].nodeValue){
+            max = game_list[i].getElementsByTagName('onlines')[0].childNodes[0].nodeValue;
+            maxOnlineIndex = i;
+        }
+    }
+    var gName = game_list[maxOnlineIndex].getElementsByTagName('name')[0].childNodes[0].nodeValue;
+    var blockID = gName+ "-block";
+    var gBlock = document.getElementById(blockID);
+    gBlock.style.backgroundColor = games_item.getAttribute('max-onlines-background');
+    gBlock.style.borderWidth = games_item.getAttribute('max-onlines-border-width');
+    gBlock.style.borderColor = games_item.getAttribute('max-onlines-border-color');
+    gBlock.style.borderStyle = games_item.getAttribute('max-onlines-border-style');
+    for (var i=0; i < game_list.length; i++){
+        gName = game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue;
+        blockID = gName + "-block";
+        gBlock = document.getElementById(blockID);
+        setItemColor(gBlock.getElementsByTagName('p')[0],game_list[i].getElementsByTagName('text')[0].getAttribute('color'));
+        setOnhoverColor(gBlock.getElementsByTagName('p')[0],game_list[i].getElementsByTagName('text')[0].getAttribute('hover'));
+        setGameOnClick(gBlock,gName);
+    }
+
 }
 
-function controller() {
-
+function setGameOnClick(item, name) {
+    item.onclick = function () {
+        controller(name);
+    };
+}
+function controller(newState) {
+    state = newState;
+    console.log("selected : " + state)
 }
 function changeMenu(){
     var menu_items = document.getElementById("games").getElementsByTagName('li');
