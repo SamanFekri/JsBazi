@@ -113,6 +113,7 @@ function controller(newState) {
         if("home".localeCompare(state) == 0){
             makeHome();
         }else{
+            var ajaxUrl;
             document.getElementById('home-icon').style.display="inline-block";
             // for games not implemented
             for (var i = 0; i < game_list.length; i++){
@@ -121,11 +122,13 @@ function controller(newState) {
                     var main_container = document.getElementById("main-container");
                     main_container.innerHTML = "<p>This game is not implemented yet!</p>";
                     return ;
+                }  else if (state.localeCompare(game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue) == 0){
+                    ajaxUrl = game_list[i].getElementsByTagName('url')[0].childNodes[0].nodeValue;
                 }
             }
             // games implemented
             if("chess".localeCompare(state) == 0){
-
+                loadChessGame(ajaxUrl);
             }else if("sudoku" .localeCompare(state) == 0){
 
             }
