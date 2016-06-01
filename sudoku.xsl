@@ -9,10 +9,10 @@
                     <xsl:for-each select="current()/cell">
                         <xsl:choose>
                             <xsl:when test="current() != ''">
-                                <td contenteditable="false" onkeypressed="sudokuOnKeyPress(event)"><xsl:value-of select="current()"/></td>
+                                <td contenteditable="false"><xsl:value-of select="current()"/></td>
                             </xsl:when>
                             <xsl:otherwise>
-                                <td contenteditable="true" onkeypressed="sudokuOnKeyPress(event)"><xsl:value-of select="current()"/></td>
+                                <td contenteditable="true"><xsl:value-of select="current()"/></td>
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:for-each>
