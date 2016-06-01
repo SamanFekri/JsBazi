@@ -142,7 +142,7 @@ function changeMenu(){
             if(i == 0){
                 menu_items[i].style.display="inline-block";
             } else{
-                menu_items[i].style.display="none";
+               menu_items[i].style.display="none";
             }
         }
         menuState = 0;
