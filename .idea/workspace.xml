@@ -4,7 +4,6 @@
     <list default="true" id="748daa60-0e8d-4df7-ad7e-977d15f08aea" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sudoku.js" afterPath="$PROJECT_DIR$/js/sudoku.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sudoku.xsl" afterPath="$PROJECT_DIR$/sudoku.xsl" />
     </list>
     <ignored path="JsBazi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="sudoku.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sudoku.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+            <state relative-caret-position="397">
+              <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -277,7 +276,7 @@
       <workItem from="1464714485833" duration="4866000" />
       <workItem from="1464753829050" duration="11450000" />
       <workItem from="1464770068393" duration="6684000" />
-      <workItem from="1464794767968" duration="11261000" />
+      <workItem from="1464794767968" duration="14506000" />
     </task>
     <task id="LOCAL-00001" summary="just a simple ajax and xml parsing">
       <created>1464161975185</created>
@@ -342,11 +341,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464776973326</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="sudoku improved :D">
+      <created>1464806196919</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1464806196919</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69584000" />
+    <option name="totallyTimeSpent" value="72829000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -390,7 +396,8 @@
     <MESSAGE value="chess ajax send and DOM of xml created" />
     <MESSAGE value="sudoku ajax send and DOM of xml created" />
     <MESSAGE value="some bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some bug fixes" />
+    <MESSAGE value="sudoku improved :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="sudoku improved :D" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -722,8 +729,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sudoku.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+        <state relative-caret-position="397">
+          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
           <folding />
         </state>
       </provider>

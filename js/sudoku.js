@@ -42,6 +42,63 @@ function makeSudoko() {
         sudokuVals[i] = tmp;
     }
     console.log(sudokuVals);
+    $("#submit-sudoku").click(function () {
+        alert("hi");
+       console.log(faultsNum());
+    });
+}
+
+function faultsNum() {
+    var faultCell = [];
+    // search square
+    for (var i = 0; i < sudokuVals.length; i++){
+        for (var j = 0; j < sudokuVals[i].length; j++){
+            var tmpNo = sudokuVals[i][j];
+            console.log(i + " > " + j)
+            for (var k = 0; k < sudokuVals.length/3; k++){
+                for (var s = 0; s < sudokuVals[k].length/3; s++){
+                    console.log(k + " >> " + s)
+                    console.log(((i/3)*3+k) + " >>> " + ((j/3)*3+s))
+                    if((i%3) != k && (j%3) != s && tmpNo == sudokuVals[(i/3)*3+k][(j/3)*3+s]){
+                        faultCell.push([i,j]);
+                        faultCell.push([(i/3)*3+k,(j/3)*3+s]);
+                        return faultCell;
+                    }
+                }
+            }
+        }
+    }
+    // search in rows and 0
+    for (var i = 0; i < sudokuVals.length; i++){
+        for (var j = 0; j < sudokuVals[i].length; j++){
+            var tmpNo = sudokuVals[i][j];
+            if(tmpNo == 0){
+                faultCell.push([i,j]);
+                return faultCell;
+            }
+            for (var k = 0; k < sudokuVals[i].length; k++){
+                if(j != k && tmpNo == sudokuVals[i][k]){
+                    faultCell.push([i,j]);
+                    faultCell.push([i,k]);
+                    return faultCell;
+                }
+            }
+        }
+    }
+    // search in column
+    for (var j = 0; j < sudokuVals.length; j++){
+        for (var i = 0; i < sudokuVals[j].length; i++){
+            var tmpNo = sudokuVals[i][j];
+            for (var k = 0; k < sudokuVals[j].length; k++){
+                if(i != k && tmpNo == sudokuVals[k][j]){
+                    faultCell.push([i,j]);
+                    faultCell.push([k,j]);
+                    return faultCell;
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 function onCellClick(item,i,j) {
