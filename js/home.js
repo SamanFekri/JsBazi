@@ -38,7 +38,7 @@ window.onload = function (){
             hgame.innerHTML += "<li>" + game_list[i].getElementsByTagName('name')[0].childNodes[0].nodeValue + "</li>";
         }
     }
-    console.log(hgame.innerHTML);
+    //console.log(hgame.innerHTML);
 
     //hgame_lis[0].style.color = gameicon.getAttribute('color');
     // set color and hover in menu
@@ -130,7 +130,7 @@ function controller(newState) {
             if("chess".localeCompare(state) == 0){
                 loadChessGame(ajaxUrl);
             }else if("sudoku" .localeCompare(state) == 0){
-
+                loadSudokuGame(ajaxUrl);
             }
         }
     }
