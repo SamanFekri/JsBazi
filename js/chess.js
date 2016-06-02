@@ -6,6 +6,9 @@ var whiteInMan=[] ,blackInMan=[]; // 0->unicode, 1->x, 2->y;
 var chessCells;
 var whiteScore,blackScore,whiteField,blackField;
 var unicodes;
+var selectedPiece;
+var castle;
+var whiteCellColor , blackCellColor;
 
 function loadChessGame(dir) {
     chessdir = dir;
@@ -22,6 +25,8 @@ function loadChessGame(dir) {
     whiteField="";
     blackField="";
     unicodes=[];
+    selectedPiece = null;
+    castle = Array(2).fill(0);
     makeChess();
 }
 function makeChess() {
@@ -38,25 +43,139 @@ function makeChess() {
     chessDiv.append(makeChessPanel());
     chessDiv.append(makeChessManPanel("black",blackOutMan));
 }
-function haveChessman(i,j,td){
-    for(var p = 0; p < whiteInMan.length; p++){
-        if(whiteInMan[p][1] == i && whiteInMan[p][2] == j){
-            td.css("color","white");
-            return whiteInMan[p][0];
+function selectChessCell(event) {
+    var cell = chessCells[event.data.x][event.data.y];
+    //console.log(event.data.x + " > " + event.data.y);
+    if(selectedPiece == null){
+        // deselect all cells
+        deselectAllCell();
+        if($('#turn').html() === cell.attr('owner')){
+            cell.css("color","blue");
+            var wcg = whereCanGo(cell,event.data.x,event.data.y);
+            if(typeof wcg !== 'undefined'){
+                colorWhereCanGo(wcg);
+            }
+            selectedPiece = cell;
+        }
+    }else{
+        if($('#turn').html() === cell.attr('owner')){
+            deselectAllCell();
+            cell.css("color","blue");
+            var wcg = whereCanGo(cell,event.data.x,event.data.y);
+            if(typeof wcg !== 'undefined'){
+                colorWhereCanGo(wcg);
+            }
+            selectedPiece = cell;
         }
     }
-    for(var p = 0; p < blackInMan.length; p++){
-        if(blackInMan[p][1] == i && blackInMan[p][2] == j){
-            td.css("color","black");
-            return blackInMan[p][0];
-        }
-    }
-    return "";
 }
+function whereCanGo(cell,x,y) {
+    var type = whoIs(x,y);
+    switch (type){
+        case "pawn":
+            if(cell.attr('owner') == "white"){
+                return(pawnMoves(x,y,whiteField));
+            } else if(cell.attr('owner') == "black"){
+                return(pawnMoves(x,y,blackField));
+            }
+            break;
+    }
+}
+function pawnMoves(x,y,moveDir) {
+    var retVal = [];
+    if(moveDir == "top"){
+        if(x == 6){
+            for(var i = 1; i <= 2; i++){
+                if(chessCells[x - i][y].attr('owner') != "none"){
+                    break;
+                }
+                retVal.push([x - i , y]);
+            }
+        }else {
+            if (x > 0) {
+                if (chessCells[x - 1][y].attr('owner') == "none") {
+                    retVal.push([x - 1, y])
+                }
+            }
+        }
+        if(x > 0 && y < 7 && y > 0){
+            if(chessCells[x - 1][y - 1].attr('owner') != chessCells[x][y].attr('owner')
+                && chessCells[x - 1][y - 1].attr('owner') != "none"){
+                retVal.push([x - 1, y - 1]);
+            }
+            if(chessCells[x - 1][y + 1].attr('owner') != chessCells[x][y].attr('owner')
+                && chessCells[x - 1][y + 1].attr('owner') != "none"){
+                retVal.push([x - 1, y + 1]);
+            }
+        }
+    }else{
+        if(x == 1){
+            for(var i = 1; i <= 2; i++){
+                if(chessCells[x + i][y].attr('owner') != "none"){
+                    break;
+                }
+                retVal.push([x + i , y]);
+            }
+        }else {
+            if (x < 7) {
+                if (chessCells[x + 1][y].attr('owner') == "none") {
+                    retVal.push([x + 1, y])
+                }
+            }
+        }
+        if(x < 7 && y < 7 && y > 0){
+            if(chessCells[x + 1][y - 1].attr('owner') != chessCells[x][y].attr('owner')
+                && chessCells[x + 1][y - 1].attr('owner') != "none"){
+                retVal.push([x + 1, y - 1]);
+            }
+            if(chessCells[x + 1][y + 1].attr('owner') != chessCells[x][y].attr('owner')
+                && chessCells[x + 1][y + 1].attr('owner') != "none"){
+                retVal.push([x + 1, y + 1]);
+            }
+        }
+    }
+    return retVal;
+}
+function colorWhereCanGo(arrayCanGo) {
+    for (var i = 0; i < arrayCanGo.length; i++){
+        if(chessCells[arrayCanGo[i][0]][arrayCanGo[i][1]].attr('owner') == "none"){
+            if(arrayCanGo[i][0] % 2 == arrayCanGo[i][1] % 2){
+                chessCells[arrayCanGo[i][0]][arrayCanGo[i][1]].css("background-color","lime");
+            }else{
+                chessCells[arrayCanGo[i][0]][arrayCanGo[i][1]].css("background-color","green");
+            }
+        }else{
+            chessCells[arrayCanGo[i][0]][arrayCanGo[i][1]].css("color","red");
+        }
+    }
+}
+function whoIs(x,y) {
+    var mcode = chessCells[x][y].html();
+    for (var code in unicodes){
+        if(mcode == unicodes[code]){
+            return code;
+        }
+    }
+}
+function deselectAllCell() {
+    for (var i = 0; i < 8; i++){
+        for (var j = 0; j < 8; j++){
+            if( i % 2 == j % 2){
+                chessCells[i][j].css("background-color",whiteCellColor);
+            }else{
+                chessCells[i][j].css("background-color",blackCellColor);
+            }
+            if(chessCells[i][j].attr('owner') != 'none'){
+                chessCells[i][j].css("color",chessCells[i][j].attr('owner'));
+            }
+        }
+    }
+}
+
 function makeChessPanel(){
     var board = DOMOfChessXml.getElementsByTagName('board')[0];
-    var whiteCellColor = board.getAttribute('white-cells');
-    var blackCellColor = board.getAttribute('black-cells');
+    whiteCellColor = board.getAttribute('white-cells');
+    blackCellColor = board.getAttribute('black-cells');
     var chessTable = jQuery("<table/>");
     for (var i = 0; i < 8; i++){
         var tr = jQuery("<tr/>");
@@ -69,6 +188,8 @@ function makeChessPanel(){
             } else {
                 td.css("background-color",blackCellColor);
             }
+            td.attr("owner","none");
+            td.click({x:i,y:j},selectChessCell);
             td.append(haveChessman(i,j,td));
             tr.append(td);
         }
@@ -79,6 +200,23 @@ function makeChessPanel(){
     console.log(chessCells);
     return chessTable;
 }
+function haveChessman(i,j,td){
+    for(var p = 0; p < whiteInMan.length; p++){
+        if(whiteInMan[p][1] == i && whiteInMan[p][2] == j){
+            td.css("color","white");
+            td.attr("owner","white");
+            return whiteInMan[p][0];
+        }
+    }
+    for(var p = 0; p < blackInMan.length; p++){
+        if(blackInMan[p][1] == i && blackInMan[p][2] == j){
+            td.css("color","black");
+            td.attr("owner","black");
+            return blackInMan[p][0];
+        }
+    }
+    return "";
+}
 function makeChessManPanel(color,outMans){
     var chessmanPanel = jQuery("<div/>").attr("id",color+"-chessman-panel").css("color",color);
     for  (var i = 0; i<outMans.length;i++){
@@ -86,7 +224,6 @@ function makeChessManPanel(color,outMans){
     }
     return chessmanPanel;
 }
-
 function chessmanToken(){
     var board = DOMOfChessXml.getElementsByTagName('chess')[0].getElementsByTagName('board')[0];
     toChessmanList(board.getElementsByTagName('white')[0],whiteInMan,whiteOutMan);
@@ -133,8 +270,6 @@ function unicodesMaker(){
     console.log(ret);
     return ret;
 }
-
-
 function makeChessInfo() {
     var infoDiv = jQuery("<div/>").attr("id","chess-info");
 
