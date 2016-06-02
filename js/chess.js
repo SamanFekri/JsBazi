@@ -6,7 +6,7 @@ var whiteInMan=[] ,blackInMan=[]; // 0->unicode, 1->x, 2->y;
 var chessCells;
 var whiteScore,blackScore,whiteField,blackField;
 var unicodes;
-var selectedPiece;
+var selectedPiece , selectedCanGo;
 var castle;
 var whiteCellColor , blackCellColor;
 
@@ -26,6 +26,7 @@ function loadChessGame(dir) {
     blackField="";
     unicodes=[];
     selectedPiece = null;
+    selectedCanGo = null;
     castle = Array(2).fill(0);
     makeChess();
 }
@@ -51,9 +52,9 @@ function selectChessCell(event) {
         deselectAllCell();
         if($('#turn').html() === cell.attr('owner')){
             cell.css("color","blue");
-            var wcg = whereCanGo(cell,event.data.x,event.data.y);
-            if(typeof wcg !== 'undefined'){
-                colorWhereCanGo(wcg);
+            selectedCanGo = whereCanGo(cell,event.data.x,event.data.y);
+            if(typeof selectedCanGo !== 'undefined'){
+                colorWhereCanGo(selectedCanGo);
             }
             selectedPiece = cell;
         }
@@ -61,11 +62,13 @@ function selectChessCell(event) {
         if($('#turn').html() === cell.attr('owner')){
             deselectAllCell();
             cell.css("color","blue");
-            var wcg = whereCanGo(cell,event.data.x,event.data.y);
-            if(typeof wcg !== 'undefined'){
-                colorWhereCanGo(wcg);
+            selectedCanGo = whereCanGo(cell,event.data.x,event.data.y);
+            if(typeof selectedCanGo !== 'undefined'){
+                colorWhereCanGo(selectedCanGo);
             }
             selectedPiece = cell;
+        }else if(cell.attr('owner') == 'none'){
+
         }
     }
 }
