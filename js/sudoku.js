@@ -42,32 +42,26 @@ function makeSudoko() {
         sudokuVals[i] = tmp;
     }
     console.log(sudokuVals);
-    $("#submit-sudoku").click(function () {
-        alert("hi");
-       console.log(faultsNum());
+
+    $("#check-sudoku").click(function () {
+        var err = faultsNum();
+        if(err != 0){
+            for (var i=0 ; i <err.length; i++){
+                $('#sudoku tr')[err[i][0]].getElementsByTagName('td')[err[i][1]].style.backgroundColor = 'orange';
+            }
+            if(err.length > 1){
+                alert("Oops! Wrong!");
+            }else {
+                alert("Blank Cell!");
+            }
+        } else {
+            alert("Congratulation!");
+        }
     });
 }
 
 function faultsNum() {
     var faultCell = [];
-    // search square
-    for (var i = 0; i < sudokuVals.length; i++){
-        for (var j = 0; j < sudokuVals[i].length; j++){
-            var tmpNo = sudokuVals[i][j];
-            console.log(i + " > " + j)
-            for (var k = 0; k < sudokuVals.length/3; k++){
-                for (var s = 0; s < sudokuVals[k].length/3; s++){
-                    console.log(k + " >> " + s)
-                    console.log(((i/3)*3+k) + " >>> " + ((j/3)*3+s))
-                    if((i%3) != k && (j%3) != s && tmpNo == sudokuVals[(i/3)*3+k][(j/3)*3+s]){
-                        faultCell.push([i,j]);
-                        faultCell.push([(i/3)*3+k,(j/3)*3+s]);
-                        return faultCell;
-                    }
-                }
-            }
-        }
-    }
     // search in rows and 0
     for (var i = 0; i < sudokuVals.length; i++){
         for (var j = 0; j < sudokuVals[i].length; j++){
@@ -94,6 +88,23 @@ function faultsNum() {
                     faultCell.push([i,j]);
                     faultCell.push([k,j]);
                     return faultCell;
+                }
+            }
+        }
+    }
+    // search square
+    for(var k = 0; k < sudokuVals.length; k++){
+        for (var i = 0; i < sudokuVals.length/3; i++){
+            for (var j = 0; j < sudokuVals[i].length/3; j++){
+                for (var p = 0; p < sudokuVals.length/3; p++){
+                    for (var q = 0; q < sudokuVals[i].length/3; q++){
+                        if(p != i && q != j
+                            && sudokuVals[(i + (k%3)*3)][(j + Math.floor(k/3)*3)] == sudokuVals[(p + (k%3)*3)][(q + Math.floor(k/3)*3)]){
+                            faultCell.push([(i + (k%3)*3),(j + Math.floor(k/3)*3)]);
+                            faultCell.push([(p + (k%3)*3),(q + Math.floor(k/3)*3)]);
+                            return faultCell;
+                        }
+                    }
                 }
             }
         }

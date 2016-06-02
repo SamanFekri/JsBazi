@@ -27,7 +27,7 @@
       <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-439">
+            <state relative-caret-position="22">
               <caret line="116" column="12" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
               <folding />
             </state>
@@ -57,8 +57,8 @@
       <file leaf-file-name="sudoku.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sudoku.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+            <state relative-caret-position="528">
+              <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -276,7 +276,8 @@
       <workItem from="1464714485833" duration="4866000" />
       <workItem from="1464753829050" duration="11450000" />
       <workItem from="1464770068393" duration="6684000" />
-      <workItem from="1464794767968" duration="14506000" />
+      <workItem from="1464794767968" duration="14558000" />
+      <workItem from="1464838100272" duration="3488000" />
     </task>
     <task id="LOCAL-00001" summary="just a simple ajax and xml parsing">
       <created>1464161975185</created>
@@ -348,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464806196919</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="sudoku test but one error exists">
+      <created>1464810351167</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1464810351167</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72829000" />
+    <option name="totallyTimeSpent" value="76369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -397,7 +405,8 @@
     <MESSAGE value="sudoku ajax send and DOM of xml created" />
     <MESSAGE value="some bug fixes" />
     <MESSAGE value="sudoku improved :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="sudoku improved :D" />
+    <MESSAGE value="sudoku test but one error exists" />
+    <option name="LAST_COMMIT_MESSAGE" value="sudoku test but one error exists" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -406,6 +415,46 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2552">
+          <caret line="116" column="12" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/chess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sudoku.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sudoku.xsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2552">
@@ -695,14 +744,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.463/style.css" />
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/chess.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
@@ -711,9 +752,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-439">
+        <state relative-caret-position="22">
           <caret line="116" column="12" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
           <folding />
         </state>
@@ -729,8 +778,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sudoku.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+        <state relative-caret-position="528">
+          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
           <folding />
         </state>
       </provider>
