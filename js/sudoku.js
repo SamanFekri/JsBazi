@@ -43,23 +43,24 @@ function makeSudoko() {
     }
     console.log(sudokuVals);
 
-    $("#check-sudoku").click(function () {
-        var err = faultsNum();
-        if(err != 0){
-            for (var i=0 ; i <err.length; i++){
-                $('#sudoku tr')[err[i][0]].getElementsByTagName('td')[err[i][1]].style.backgroundColor = 'orange';
-            }
-            if(err.length > 1){
-                alert("Oops! Wrong!");
-            }else {
-                alert("Blank Cell!");
-            }
-        } else {
-            alert("Congratulation!");
-        }
-    });
+    // on button click
+    $("#check-sudoku").click(check_sudoku);
 }
-
+function check_sudoku(){
+    var err = faultsNum();
+    if(err != 0){
+        for (var i=0 ; i <err.length; i++){
+            $('#sudoku tr')[err[i][0]].getElementsByTagName('td')[err[i][1]].style.backgroundColor = 'orange';
+        }
+        if(err.length > 1){
+            alert("Oops! Wrong!");
+        }else {
+            alert("Blank Cell!");
+        }
+    } else {
+        alert("Congratulation!");
+    }
+}
 function faultsNum() {
     var faultCell = [];
     // search in rows and 0
