@@ -9,6 +9,7 @@ var unicodes;
 var selectedPiece , selectedCanGo;
 var castle;
 var whiteCellColor , blackCellColor;
+var pieceScore ={pawn:1,knight:3,bishop:3,rook:5,queen:9};
 
 function loadChessGame(dir) {
     chessdir = dir;
@@ -27,6 +28,7 @@ function loadChessGame(dir) {
     unicodes=[];
     selectedPiece = null;
     selectedCanGo = null;
+
     castle = Array(2).fill(0);
     makeChess();
 }
@@ -68,6 +70,12 @@ function selectChessCell(event) {
             }
             selectedPiece = cell;
         }else if(cell.attr('owner') == 'none'){
+            move(cell,event.data.x,event.data.y);
+        }else{
+            var canAttack = attack(cell);
+            if(canAttack){
+                move(cell,event.data.x,event.data.y);
+            }
 
         }
     }
@@ -82,6 +90,78 @@ function whereCanGo(cell,x,y) {
                 return(pawnMoves(x,y,blackField));
             }
             break;
+    }
+}
+function attack(cell) {
+    var type = whoIs(cell.attr("x"),cell.attr("y"));
+    if(checkCanGo(cell.attr("x"),cell.attr("y"))){
+        if(type == "king"){
+            return false;
+        }else{
+            var score = Number($("#"+selectedPiece.attr('owner')+"-score").html());
+            score += pieceScore[type];
+            $("#"+selectedPiece.attr('owner')+"-score").html(score);
+            $("#"+cell.attr('owner')+"-chessman-panel").append(cell.html());
+            if(cell.attr('owner') == "white"){
+                whiteOutMan.push(cell.html());
+            }else{
+                blackOutMan.push(cell.html());
+            }
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+function move(cell,x,y) {
+    if(checkCanGo(x,y)){
+        cell.html(selectedPiece.html());
+        cell.css("color",selectedPiece.attr('owner'));
+        cell.attr("owner",selectedPiece.attr('owner'));
+
+        selectedPiece.html("");
+        selectedPiece.attr('owner',"none");
+        selectedPiece.css('color',"");
+        deselectAllCell();
+        if(x % 2 == y % 2){
+            cell.css("background-color","lime");
+        }else{
+            cell.css("background-color","green");
+        }
+        if(selectedPiece.attr('x') % 2 == selectedPiece.attr('y') % 2){
+            selectedPiece.css("background-color","lime");
+        }else{
+            selectedPiece.css("background-color","green");
+        }
+        updateInMan();
+        setTimeout(function () {
+            deselectAllCell();
+        },500);
+    }else{
+        deselectAllCell();
+    }
+    selectedPiece = null;
+    selectedCanGo = null;
+}
+function checkCanGo(x,y) {
+    for(var i = 0; i < selectedCanGo.length; i++){
+        if(selectedCanGo[i][0] == x && selectedCanGo[i][1] == y){
+            return true;
+        }
+    }
+    return false;
+}
+function updateInMan() {
+    whiteInMan = [];
+    blackInMan = [];
+    for (var i = 0; i < chessCells.length; i++){
+        for (var j = 0; j < chessCells[i].length; j++){
+            if(chessCells[i][j].attr('owner') == "white"){
+                whiteInMan.push([chessCells[i][j].html(),i,j]);
+            }else{
+                blackInMan.push([chessCells[i][j].html(),i,j]);
+            }
+        }
     }
 }
 function pawnMoves(x,y,moveDir) {
@@ -126,14 +206,18 @@ function pawnMoves(x,y,moveDir) {
                 }
             }
         }
-        if(x < 7 && y < 7 && y > 0){
-            if(chessCells[x + 1][y - 1].attr('owner') != chessCells[x][y].attr('owner')
-                && chessCells[x + 1][y - 1].attr('owner') != "none"){
-                retVal.push([x + 1, y - 1]);
+        if(x < 7 ){
+            if(y > 0){
+                if(chessCells[x + 1][y - 1].attr('owner') != chessCells[x][y].attr('owner')
+                    && chessCells[x + 1][y - 1].attr('owner') != "none"){
+                    retVal.push([x + 1, y - 1]);
+                }
             }
-            if(chessCells[x + 1][y + 1].attr('owner') != chessCells[x][y].attr('owner')
-                && chessCells[x + 1][y + 1].attr('owner') != "none"){
-                retVal.push([x + 1, y + 1]);
+            if(y < 7){
+                if(chessCells[x + 1][y + 1].attr('owner') != chessCells[x][y].attr('owner')
+                    && chessCells[x + 1][y + 1].attr('owner') != "none") {
+                    retVal.push([x + 1, y + 1]);
+                }
             }
         }
     }
@@ -192,6 +276,8 @@ function makeChessPanel(){
                 td.css("background-color",blackCellColor);
             }
             td.attr("owner","none");
+            td.attr("x",i);
+            td.attr("y",j);
             td.click({x:i,y:j},selectChessCell);
             td.append(haveChessman(i,j,td));
             tr.append(td);
@@ -221,7 +307,8 @@ function haveChessman(i,j,td){
     return "";
 }
 function makeChessManPanel(color,outMans){
-    var chessmanPanel = jQuery("<div/>").attr("id",color+"-chessman-panel").css("color",color);
+    var chessmanPanel = jQuery("<div/>").attr("id",color+"-chessman-panel")
+        .css("color",color).css("word-wrap","break-word");
     for  (var i = 0; i<outMans.length;i++){
         chessmanPanel.append(outMans[i]);
     }
