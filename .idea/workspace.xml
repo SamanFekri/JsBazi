@@ -47,13 +47,31 @@
       <file leaf-file-name="chess.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/chess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="354" column="57" selection-start-line="354" selection-start-column="51" selection-end-line="354" selection-end-column="57" />
+            <state relative-caret-position="-1048">
+              <caret line="330" column="6" selection-start-line="330" selection-start-column="6" selection-end-line="330" selection-end-column="6" />
               <folding>
+                <element signature="n#!!block;n#selectChessCell#0" expanded="false" />
+                <element signature="n#!!block;n#rookMoves#0" expanded="false" />
+                <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
+                <element signature="n#!!block;n#knightMoves#0" expanded="false" />
+                <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
+                <element signature="n#!!block;n#castleMoves#0" expanded="false" />
+                <element signature="n#!!block;n#promotion#0" expanded="false" />
+                <element signature="n#!!block;n#attack#0" expanded="false" />
                 <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
+                <element signature="n#!!block;n#updateInMan#0" expanded="false" />
                 <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
                 <element signature="n#!!block;n#whoIs#0" expanded="false" />
                 <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
+                <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
+                <element signature="n#!!block;n#haveChessman#0" expanded="false" />
+                <element signature="n#!!block;n#makeChessManPanel#0" expanded="false" />
+                <element signature="n#!!block;n#chessmanToken#0" expanded="false" />
+                <element signature="n#!!block;n#toChessmanList#0" expanded="false" />
+                <element signature="n#!!block;n#listAdder#0" expanded="false" />
+                <element signature="n#!!block;n#unicodesMaker#0" expanded="false" />
+                <element signature="n#!!block;n#makeChessInfo#0" expanded="false" />
+                <element signature="n#!!block;n#analyzeChess#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -293,7 +311,7 @@
       <workItem from="1464770068393" duration="6684000" />
       <workItem from="1464794767968" duration="14558000" />
       <workItem from="1464838100272" duration="30736000" />
-      <workItem from="1464922773875" duration="7884000" />
+      <workItem from="1464922773875" duration="24852000" />
     </task>
     <task id="LOCAL-00001" summary="just a simple ajax and xml parsing">
       <created>1464161975185</created>
@@ -407,11 +425,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464884910146</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="player can move in chess">
+      <created>1464932404114</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1464932404114</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111501000" />
+    <option name="totallyTimeSpent" value="128469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -462,7 +487,8 @@
     <MESSAGE value="chess mans added on table" />
     <MESSAGE value="pawn space can go created" />
     <MESSAGE value="chess improved :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="chess improved :D" />
+    <MESSAGE value="player can move in chess" />
+    <option name="LAST_COMMIT_MESSAGE" value="player can move in chess" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -508,10 +534,28 @@
         <state relative-caret-position="550">
           <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#selectChessCell#0" expanded="false" />
+            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
+            <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
+            <element signature="n#!!block;n#knightMoves#0" expanded="false" />
+            <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
+            <element signature="n#!!block;n#castleMoves#0" expanded="false" />
+            <element signature="n#!!block;n#promotion#0" expanded="false" />
+            <element signature="n#!!block;n#attack#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
+            <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
             <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
+            <element signature="n#!!block;n#haveChessman#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessManPanel#0" expanded="false" />
+            <element signature="n#!!block;n#chessmanToken#0" expanded="false" />
+            <element signature="n#!!block;n#toChessmanList#0" expanded="false" />
+            <element signature="n#!!block;n#listAdder#0" expanded="false" />
+            <element signature="n#!!block;n#unicodesMaker#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessInfo#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeChess#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -553,10 +597,28 @@
         <state relative-caret-position="550">
           <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#selectChessCell#0" expanded="false" />
+            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
+            <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
+            <element signature="n#!!block;n#knightMoves#0" expanded="false" />
+            <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
+            <element signature="n#!!block;n#castleMoves#0" expanded="false" />
+            <element signature="n#!!block;n#promotion#0" expanded="false" />
+            <element signature="n#!!block;n#attack#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
+            <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
             <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
+            <element signature="n#!!block;n#haveChessman#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessManPanel#0" expanded="false" />
+            <element signature="n#!!block;n#chessmanToken#0" expanded="false" />
+            <element signature="n#!!block;n#toChessmanList#0" expanded="false" />
+            <element signature="n#!!block;n#listAdder#0" expanded="false" />
+            <element signature="n#!!block;n#unicodesMaker#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessInfo#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeChess#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -606,10 +668,28 @@
         <state relative-caret-position="550">
           <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#selectChessCell#0" expanded="false" />
+            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
+            <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
+            <element signature="n#!!block;n#knightMoves#0" expanded="false" />
+            <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
+            <element signature="n#!!block;n#castleMoves#0" expanded="false" />
+            <element signature="n#!!block;n#promotion#0" expanded="false" />
+            <element signature="n#!!block;n#attack#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
+            <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
             <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
+            <element signature="n#!!block;n#haveChessman#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessManPanel#0" expanded="false" />
+            <element signature="n#!!block;n#chessmanToken#0" expanded="false" />
+            <element signature="n#!!block;n#toChessmanList#0" expanded="false" />
+            <element signature="n#!!block;n#listAdder#0" expanded="false" />
+            <element signature="n#!!block;n#unicodesMaker#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessInfo#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeChess#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -644,10 +724,28 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#selectChessCell#0" expanded="false" />
+            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
+            <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
+            <element signature="n#!!block;n#knightMoves#0" expanded="false" />
+            <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
+            <element signature="n#!!block;n#castleMoves#0" expanded="false" />
+            <element signature="n#!!block;n#promotion#0" expanded="false" />
+            <element signature="n#!!block;n#attack#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
+            <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
             <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
+            <element signature="n#!!block;n#haveChessman#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessManPanel#0" expanded="false" />
+            <element signature="n#!!block;n#chessmanToken#0" expanded="false" />
+            <element signature="n#!!block;n#toChessmanList#0" expanded="false" />
+            <element signature="n#!!block;n#listAdder#0" expanded="false" />
+            <element signature="n#!!block;n#unicodesMaker#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessInfo#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeChess#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,14 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -869,15 +959,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/chess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="354" column="57" selection-start-line="354" selection-start-column="51" selection-end-line="354" selection-end-column="57" />
+        <state relative-caret-position="-1048">
+          <caret line="330" column="6" selection-start-line="330" selection-start-column="6" selection-end-line="330" selection-end-column="6" />
           <folding>
+            <element signature="n#!!block;n#selectChessCell#0" expanded="false" />
+            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
+            <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
+            <element signature="n#!!block;n#knightMoves#0" expanded="false" />
+            <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
+            <element signature="n#!!block;n#castleMoves#0" expanded="false" />
+            <element signature="n#!!block;n#promotion#0" expanded="false" />
+            <element signature="n#!!block;n#attack#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
+            <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
             <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
+            <element signature="n#!!block;n#haveChessman#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessManPanel#0" expanded="false" />
+            <element signature="n#!!block;n#chessmanToken#0" expanded="false" />
+            <element signature="n#!!block;n#toChessmanList#0" expanded="false" />
+            <element signature="n#!!block;n#listAdder#0" expanded="false" />
+            <element signature="n#!!block;n#unicodesMaker#0" expanded="false" />
+            <element signature="n#!!block;n#makeChessInfo#0" expanded="false" />
+            <element signature="n#!!block;n#analyzeChess#0" expanded="false" />
           </folding>
         </state>
       </provider>
