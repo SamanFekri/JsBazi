@@ -47,11 +47,11 @@
       <file leaf-file-name="chess.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/chess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1107">
-              <caret line="144" column="23" selection-start-line="144" selection-start-column="23" selection-end-line="144" selection-end-column="23" />
+            <state relative-caret-position="327">
+              <caret line="195" column="37" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="37" />
               <folding>
+                <element signature="n#!!block;n#makeChess#0" expanded="false" />
                 <element signature="n#!!block;n#kingMoves#0" expanded="false" />
-                <element signature="n#!!block;n#rookMoves#0" expanded="false" />
                 <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
                 <element signature="n#!!block;n#knightMoves#0" expanded="false" />
                 <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
@@ -59,10 +59,10 @@
                 <element signature="n#!!block;n#castleMoves#0" expanded="false" />
                 <element signature="n#!!block;n#promotion#0" expanded="false" />
                 <element signature="n#!!block;n#attack#0" expanded="false" />
+                <element signature="n#!!block;n#move#0" expanded="false" />
                 <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
                 <element signature="n#!!block;n#updateInMan#0" expanded="false" />
                 <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
-                <element signature="n#!!block;n#whoIs#0" expanded="false" />
                 <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
                 <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
                 <element signature="n#!!block;n#haveChessman#0" expanded="false" />
@@ -78,20 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/style/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="sudoku.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/sudoku.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1012">
+            <state relative-caret-position="837">
               <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
               <folding />
             </state>
@@ -312,7 +302,8 @@
       <workItem from="1464770068393" duration="6684000" />
       <workItem from="1464794767968" duration="14558000" />
       <workItem from="1464838100272" duration="30736000" />
-      <workItem from="1464922773875" duration="26787000" />
+      <workItem from="1464922773875" duration="26853000" />
+      <workItem from="1464962464976" duration="10414000" />
     </task>
     <task id="LOCAL-00001" summary="just a simple ajax and xml parsing">
       <created>1464161975185</created>
@@ -440,11 +431,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464955867917</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="starting check and checkmate functions">
+      <created>1464958023351</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1464958023351</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130404000" />
+    <option name="totallyTimeSpent" value="140884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -497,7 +495,8 @@
     <MESSAGE value="chess improved :D" />
     <MESSAGE value="player can move in chess" />
     <MESSAGE value="castle move added" />
-    <option name="LAST_COMMIT_MESSAGE" value="castle move added" />
+    <MESSAGE value="starting check and checkmate functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting check and checkmate functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -543,8 +542,8 @@
         <state relative-caret-position="550">
           <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#makeChess#0" expanded="false" />
             <element signature="n#!!block;n#kingMoves#0" expanded="false" />
-            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
             <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
             <element signature="n#!!block;n#knightMoves#0" expanded="false" />
             <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
@@ -552,10 +551,10 @@
             <element signature="n#!!block;n#castleMoves#0" expanded="false" />
             <element signature="n#!!block;n#promotion#0" expanded="false" />
             <element signature="n#!!block;n#attack#0" expanded="false" />
+            <element signature="n#!!block;n#move#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
             <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
-            <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
             <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
             <element signature="n#!!block;n#haveChessman#0" expanded="false" />
@@ -607,8 +606,8 @@
         <state relative-caret-position="550">
           <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#makeChess#0" expanded="false" />
             <element signature="n#!!block;n#kingMoves#0" expanded="false" />
-            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
             <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
             <element signature="n#!!block;n#knightMoves#0" expanded="false" />
             <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
@@ -616,10 +615,10 @@
             <element signature="n#!!block;n#castleMoves#0" expanded="false" />
             <element signature="n#!!block;n#promotion#0" expanded="false" />
             <element signature="n#!!block;n#attack#0" expanded="false" />
+            <element signature="n#!!block;n#move#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
             <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
-            <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
             <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
             <element signature="n#!!block;n#haveChessman#0" expanded="false" />
@@ -679,8 +678,8 @@
         <state relative-caret-position="550">
           <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#makeChess#0" expanded="false" />
             <element signature="n#!!block;n#kingMoves#0" expanded="false" />
-            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
             <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
             <element signature="n#!!block;n#knightMoves#0" expanded="false" />
             <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
@@ -688,10 +687,10 @@
             <element signature="n#!!block;n#castleMoves#0" expanded="false" />
             <element signature="n#!!block;n#promotion#0" expanded="false" />
             <element signature="n#!!block;n#attack#0" expanded="false" />
+            <element signature="n#!!block;n#move#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
             <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
-            <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
             <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
             <element signature="n#!!block;n#haveChessman#0" expanded="false" />
@@ -736,8 +735,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!block;n#makeChess#0" expanded="false" />
             <element signature="n#!!block;n#kingMoves#0" expanded="false" />
-            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
             <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
             <element signature="n#!!block;n#knightMoves#0" expanded="false" />
             <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
@@ -745,10 +744,10 @@
             <element signature="n#!!block;n#castleMoves#0" expanded="false" />
             <element signature="n#!!block;n#promotion#0" expanded="false" />
             <element signature="n#!!block;n#attack#0" expanded="false" />
+            <element signature="n#!!block;n#move#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
             <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
-            <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
             <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
             <element signature="n#!!block;n#haveChessman#0" expanded="false" />
@@ -940,26 +939,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sudoku_solution.xsd" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.463/style.css" />
-    <entry file="file://$PROJECT_DIR$/sudoku.xsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2552">
           <caret line="116" column="12" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/sudoku.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -980,13 +963,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sudoku.xsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sudoku.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/chess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1107">
-          <caret line="144" column="23" selection-start-line="144" selection-start-column="23" selection-end-line="144" selection-end-column="23" />
+        <state relative-caret-position="327">
+          <caret line="195" column="37" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="37" />
           <folding>
+            <element signature="n#!!block;n#makeChess#0" expanded="false" />
             <element signature="n#!!block;n#kingMoves#0" expanded="false" />
-            <element signature="n#!!block;n#rookMoves#0" expanded="false" />
             <element signature="n#!!block;n#bishopMoves#0" expanded="false" />
             <element signature="n#!!block;n#knightMoves#0" expanded="false" />
             <element signature="n#!!block;n#pawnMoves#0" expanded="false" />
@@ -994,10 +993,10 @@
             <element signature="n#!!block;n#castleMoves#0" expanded="false" />
             <element signature="n#!!block;n#promotion#0" expanded="false" />
             <element signature="n#!!block;n#attack#0" expanded="false" />
+            <element signature="n#!!block;n#move#0" expanded="false" />
             <element signature="n#!!block;n#checkCanGo#0" expanded="false" />
             <element signature="n#!!block;n#updateInMan#0" expanded="false" />
             <element signature="n#!!block;n#colorWhereCanGo#0" expanded="false" />
-            <element signature="n#!!block;n#whoIs#0" expanded="false" />
             <element signature="n#!!block;n#deselectAllCell#0" expanded="false" />
             <element signature="n#!!block;n#makeChessPanel#0" expanded="false" />
             <element signature="n#!!block;n#haveChessman#0" expanded="false" />
