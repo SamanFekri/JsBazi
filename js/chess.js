@@ -81,7 +81,6 @@ function selectChessCell(event) {
             if(canAttack){
                 move(cell,event.data.x,event.data.y);
             }
-
         }
     }
 }
@@ -114,6 +113,46 @@ function whereCanGo(cell,x,y) {
             return(kingMoves(x,y));
             break;
     }
+}
+function cellsCanAttack(color) {
+    var retVal = [];
+    var chessmans = [];
+    var dir;
+    if(color == "white"){
+        chessmans = whiteInMan;
+        dir = whiteField;
+    }else{
+        chessmans = blackInMan;
+        dir = blackField;
+    }
+    for (var i = 0; i <chessmans.length; i++){
+        if(chessmans[i][0] == unicodes[pawn]){
+            retVal = retVal.concat(whereCanGo(chessCells[chessmans[i][1]],chessCells[chessmans[i][2]]));
+        } else {
+            if(dir = "top"){
+                retVal.push(chessmans[i][1]-1,chessmans[i][2]+1);
+                retVal.push(chessmans[i][1]-1,chessmans[i][2]-1);
+            }else{
+                retVal.push(chessmans[i][1]+1,chessmans[i][2]+1);
+                retVal.push(chessmans[i][1]+1,chessmans[i][2]-1);
+            }
+        }
+    }
+    return retVal;
+}
+function cellsCanGo(color) {
+    var retVal = [];
+    var chessmans = [];
+    if(color == "white"){
+        chessmans = whiteInMan;
+    }else{
+        chessmans = blackInMan;
+    }
+    for (var i = 0; i <chessmans.length; i++){
+        retVal = retVal.concat(whereCanGo(chessCells[chessmans[i][1]],chessCells[chessmans[i][2]]));
+
+    }
+    return retVal;
 }
 function kingMoves(x,y) {
     var retVal = [];
