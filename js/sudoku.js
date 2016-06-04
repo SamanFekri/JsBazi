@@ -5,6 +5,7 @@ var xsl;
 var xsltDir = "sudoku.xsl";
 var sudokuVals;
 var selectBgColor , selectColor , sudoCellHover;
+var submitUrl = "http://ie.ce-it.ir/hw3/sudoku_validator.php";
 
 function loadSudokuGame(dir) {
     sudokudir = dir;
@@ -45,6 +46,9 @@ function makeSudoko() {
 
     // on button click
     $("#check-sudoku").click(check_sudoku);
+    $("#submit-sudoku").click(function () {
+        submit_sudoku_cheecker();
+    });
 }
 function check_sudoku(){
     var err = faultsNum();
@@ -60,6 +64,48 @@ function check_sudoku(){
     } else {
         alert("Congratulation!");
     }
+}
+function submit_sudoku_cheecker() {
+    for (var i = 0; i < sudokuVals.length; i++){
+        for (var j = 0; j < sudokuVals[i].length; j++){
+            if(sudokuVals[i][j] == 0){
+                alert("Blank Cell !!");
+                return "Blank Cell !!";
+            }
+        }
+    }
+
+    var solution_xml = '<?xml version="1.0" encoding="utf-8"?><solution>';
+    solution_xml +="<cells>";
+    for (var i = 0; i < sudokuVals.length; i++){
+        for (var j = 0; j < sudokuVals[i].length; j++) {
+            solution_xml += "<cell posval=\""+Number(i*100 + j*10 +sudokuVals[i][j])+"\">"+sudokuVals[i][j]+"</cell>";
+        }
+    }
+    solution_xml += "</cells>";
+    solution_xml += '<student id="9231075">Saman fekri</student>';
+    solution_xml += "</solution>";
+    console.log(solution_xml)
+    postAjax(submitUrl,postSudoku,solution_xml);
+
+}
+function postSudoku(){
+    if(this.readyState == 4){
+        if(this.status == 200){
+            var response = this.responseText;
+            alert(response);
+            return response;
+        }
+        else{
+            window.alert("Error: "+ this.statusText);
+        }
+    }
+}
+function postAjax(url,process,solution_xml){
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange = process;
+    xmlhttp.open("POST",url,false);
+    xmlhttp.send("solution_xml=" + solution_xml);
 }
 function faultsNum() {
     var faultCell = [];
