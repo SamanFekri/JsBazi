@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="748daa60-0e8d-4df7-ad7e-977d15f08aea" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sudoku_solution.xsd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sudoku.js" afterPath="$PROJECT_DIR$/js/sudoku.js" />
     </list>
@@ -91,7 +90,7 @@
       <file leaf-file-name="sudoku.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sudoku.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
+            <state relative-caret-position="-66">
               <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
               <folding>
                 <element signature="n#!!block;n#faultsNum#0" expanded="false" />
@@ -326,7 +325,7 @@
       <workItem from="1464838100272" duration="30736000" />
       <workItem from="1464922773875" duration="26853000" />
       <workItem from="1464962464976" duration="10463000" />
-      <workItem from="1465008105637" duration="14881000" />
+      <workItem from="1465008105637" duration="15544000" />
     </task>
     <task id="LOCAL-00001" summary="just a simple ajax and xml parsing">
       <created>1464161975185</created>
@@ -475,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1465016265014</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="xsd added">
+      <created>1465023100853</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1465023100853</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155814000" />
+    <option name="totallyTimeSpent" value="156477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -535,7 +541,8 @@
     <MESSAGE value="starting check and checkmate functions" />
     <MESSAGE value="check and check mate logically created" />
     <MESSAGE value="chess compeleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="chess compeleted" />
+    <MESSAGE value="xsd added" />
+    <option name="LAST_COMMIT_MESSAGE" value="xsd added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1131,7 +1138,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sudoku.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
+        <state relative-caret-position="-66">
           <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
           <folding>
             <element signature="n#!!block;n#faultsNum#0" expanded="false" />

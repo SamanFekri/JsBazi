@@ -74,7 +74,6 @@ function submit_sudoku_cheecker() {
             }
         }
     }
-
     var solution_xml = '<?xml version="1.0" encoding="utf-8"?><solution>';
     solution_xml +="<cells>";
     for (var i = 0; i < sudokuVals.length; i++){
@@ -105,6 +104,7 @@ function postAjax(url,process,solution_xml){
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange = process;
     xmlhttp.open("POST",url,false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send("solution_xml=" + solution_xml);
 }
 function faultsNum() {
