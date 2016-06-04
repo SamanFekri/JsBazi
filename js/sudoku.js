@@ -2,7 +2,7 @@ var DOMOfSudokuXml = null;
 var resultOfSudokuAjax;
 var sudokudir;
 var xsl;
-var xsltDir = "sudoku.xsl";
+var xsltDir = "./sudoku.xsl";
 var sudokuVals;
 var selectBgColor , selectColor , sudoCellHover;
 var submitUrl = "http://ie.ce-it.ir/hw3/sudoku_validator.php";
