@@ -11,6 +11,7 @@ var castle;
 var whiteCellColor , blackCellColor;
 var pieceScore ={pawn:1,knight:3,bishop:3,rook:5,queen:9};
 var opColor ={white:"black",black:"white"}
+var nextTurnCanGo ;
 
 function loadChessGame(dir) {
     chessdir = dir;
@@ -33,7 +34,11 @@ function loadChessGame(dir) {
     castle = [];
     castle.push([0,0]);
     castle.push([0,0]);
+    nextTurnCanGo = [];
     makeChess();
+    checckAndCheckmate($("#turn").html());
+    deselectAllCell();
+    //changeSide();
 }
 function makeChess() {
     $('#main-container').html("");
@@ -61,6 +66,7 @@ function selectChessCell(event) {
         if($('#turn').html() === cell.attr('owner')){
             cell.css("color","blue");
             selectedCanGo = whereCanGo(cell,event.data.x,event.data.y);
+            selectedCanGo = filterWhereCanGo();
             if(typeof selectedCanGo !== 'undefined'){
                 colorWhereCanGo(selectedCanGo);
             }
@@ -71,26 +77,17 @@ function selectChessCell(event) {
             deselectAllCell();
             cell.css("color","blue");
             selectedCanGo = whereCanGo(cell,event.data.x,event.data.y);
+            selectedCanGo = filterWhereCanGo();
             if(typeof selectedCanGo !== 'undefined'){
                 colorWhereCanGo(selectedCanGo);
             }
             selectedPiece = cell;
         }else if(cell.attr('owner') == 'none'){
             move(cell,event.data.x,event.data.y);
-
-            check("white");
-            if(cellsCanGo("white").length == 0){
-                alert("mat");
-            }
         }else{
             var canAttack = attack(cell);
             if(canAttack){
                 move(cell,event.data.x,event.data.y);
-
-                check("white");
-                if(cellsCanGo("white").length == 0){
-                    alert("mat");
-                }
             }
         }
     }
@@ -125,10 +122,85 @@ function whereCanGo(cell,x,y) {
             break;
     }
 }
+function changeTurn() {
+    $("#turn").html(opColor[$("#turn").html()]);
+    $("#turn").attr('class',$("#turn").html());
+    //changeSide();
+}
+/*function changeSide() {
+    var dir;
+    if(whiteField == "top"){
+        dir = {bot:"black",top:"white"}
+    }else{
+        dir = {top:"black",bot:"white"}
+    }
+    if($("#turn").html() == dir['bot']){
+        $("#chess > table").css('-webkit-transform','rotate('+180+'deg)');
+        $("#chess > table").css('-moz-transform','rotate('+180+'deg)');
+        $("#chess > table").css('transform','rotate('+180+'deg)');
+        for (var i = 0; i < chessCells.length; i++){
+            for (var j = 0; j < chessCells[i].length; j++){
+                chessCells[i][j].css('-webkit-transform','rotate('+180+'deg)');
+                chessCells[i][j].css('-moz-transform','rotate('+180+'deg)');
+                chessCells[i][j].css('transform','rotate('+180+'deg)');
+            }
+        }
+    }else{
+        $("#chess > table").css('-webkit-transform','rotate('+0+'deg)');
+        $("#chess > table").css('-moz-transform','rotate('+0+'deg)');
+        $("#chess > table").css('transform','rotate('+0+'deg)');
+        for (var i = 0; i < chessCells.length; i++){
+            for (var j = 0; j < chessCells[i].length; j++){
+                chessCells[i][j].css('-webkit-transform','rotate('+0+'deg)');
+                chessCells[i][j].css('-moz-transform','rotate('+0+'deg)');
+                chessCells[i][j].css('transform','rotate('+0+'deg)');
+            }
+        }
+    }
+}*/
+function filterWhereCanGo() {
+    var retVal = [];
+    for(var i = 0; i < selectedCanGo.length; i++){
+        for (var j = 0; j < nextTurnCanGo.length; j++){
+            if(selectedCanGo[i][0] == nextTurnCanGo[j][0] &&
+                selectedCanGo[i][1] == nextTurnCanGo[j][1]){
+                retVal.push([selectedCanGo[i][0],selectedCanGo[i][1]]);
+            }
+        }
+    }
+    return retVal;
+}
+function checckAndCheckmate(color) {
+    nextTurnCanGo =cellsCanGo(color);
+    // test for cells can go
+    /*console.log("checkmate")
+    console.log(nextTurnCanGo)
+    for(var i =0 ; i < nextTurnCanGo.length; i++){
+        chessCells[nextTurnCanGo[i][0]][nextTurnCanGo[i][1]].css("background-color","red");
+    }*/
+    if(check(color)){
+        if($('#p-stat').length > 0){
+            $('#p-stat').html(color + " checked!!!");
+        }else{
+            var p = jQuery("<p/>");
+            p.attr('id',"p-stat");
+            p.html(color + " checked!!!");
+            $("#main-container").append(p);
+        }
+
+        if(nextTurnCanGo.length == 0){
+            $("#main-container").html("Congrajulation !! \n"+opColor[color] +" wins the match!!")
+        }
+    }else{
+        if($('#p-stat').length > 0) {
+            $('#p-stat').remove();
+        }
+    }
+}
 function check(color) {
     var lists = {white:whiteInMan,black:blackInMan}
     var mytmp = lists[color];
-    console.log(mytmp)
+    //console.log(mytmp)
     var mytmp2 = [];
     for (var i = 0; i < mytmp.length; i++){
         if(mytmp[i][0] == unicodes['king']){
@@ -197,6 +269,7 @@ function cellsCanGo(color) {
             var xy = [Number(chessmans[i][1]),Number(chessmans[i][2])];
             var ptmp = chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].html();
             var powner = chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].attr('owner');
+            var pcolor = chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].css('color');
 
             xchangeCell(chessCells[xy[0]][xy[1]],chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])]);
             chessmans[i][1] = Number(thisCanGo[j][0]);
@@ -212,6 +285,7 @@ function cellsCanGo(color) {
             chessmans[i][2] = xy[1];
             chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].html(ptmp);
             chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].attr('owner',powner);
+            chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].css('color',pcolor);
             updateInMan();
         }
         /*retVal = retVal.concat(whereCanGo(chessCells[chessmans[i][1]][chessmans[i][2]],
@@ -242,7 +316,7 @@ function kingMoves(x,y) {
     if(mycastle != null){
         retVal = retVal.concat(mycastle);
     }
-    console.log(retVal);
+    //console.log(retVal);
     return retVal;
 }
 function rookMoves(x,y) {
@@ -569,15 +643,11 @@ function move(cell,x,y) {
         cell.css("color",selectedPiece.attr('owner'));
         cell.attr("owner",selectedPiece.attr('owner'));
         // for castle move
-        //console.log("here3");
-        //console.log(whoIs(selectedPiece.attr("x"),selectedPiece.attr("y")));
         if(whoIs(selectedPiece.attr("x"),selectedPiece.attr("y")) == "king"){
-            //console.log("here");
+
             if(selectedPiece.attr("y") - y > 1){
-                //console.log("here2");
                 xchangeCell(chessCells[selectedPiece.attr("x")][0],chessCells[selectedPiece.attr("x")][2]);
             }else if( selectedPiece.attr("y") - y < -1 ) {
-                //console.log("here4");
                 xchangeCell(chessCells[selectedPiece.attr("x")][7],chessCells[selectedPiece.attr("x")][4]);
             }
         }
@@ -598,6 +668,11 @@ function move(cell,x,y) {
         promotion(x,y);
         updateInMan();
         castleFirstCheck();
+
+        checckAndCheckmate(opColor[$("#turn").html()]);
+        changeTurn();
+        deselectAllCell();
+
         //console.log(castle);
         setTimeout(function () {
             deselectAllCell();
