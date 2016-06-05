@@ -66,7 +66,7 @@ function selectChessCell(event) {
         if($('#turn').html() === cell.attr('owner')){
             cell.css("color","blue");
             selectedCanGo = whereCanGo(cell,event.data.x,event.data.y);
-            selectedCanGo = filterWhereCanGo();
+            selectedCanGo = filterWhereCanGo(cell.html());
             if(typeof selectedCanGo !== 'undefined'){
                 colorWhereCanGo(selectedCanGo);
             }
@@ -77,7 +77,7 @@ function selectChessCell(event) {
             deselectAllCell();
             cell.css("color","blue");
             selectedCanGo = whereCanGo(cell,event.data.x,event.data.y);
-            selectedCanGo = filterWhereCanGo();
+            selectedCanGo = filterWhereCanGo(cell.html());
             if(typeof selectedCanGo !== 'undefined'){
                 colorWhereCanGo(selectedCanGo);
             }
@@ -158,16 +158,21 @@ function changeTurn() {
         }
     }
 }*/
-function filterWhereCanGo() {
+function filterWhereCanGo(cellUnicode) {
     var retVal = [];
     for(var i = 0; i < selectedCanGo.length; i++){
         for (var j = 0; j < nextTurnCanGo.length; j++){
+            //console.log("ih >>> "+nextTurnCanGo[j][2] + " <<<< " + cellUnicode)
+            //console.log(nextTurnCanGo[j])
             if(selectedCanGo[i][0] == nextTurnCanGo[j][0] &&
-                selectedCanGo[i][1] == nextTurnCanGo[j][1]){
+                selectedCanGo[i][1] == nextTurnCanGo[j][1] &&
+                cellUnicode == nextTurnCanGo[j][2]){
                 retVal.push([selectedCanGo[i][0],selectedCanGo[i][1]]);
             }
         }
     }
+    console.log('filter');
+    console.log(retVal);
     return retVal;
 }
 function checckAndCheckmate(color) {
@@ -277,7 +282,11 @@ function cellsCanGo(color) {
             updateInMan();
 
             if(check(color) == false) {
-                retVal.push([Number(thisCanGo[j][0]), Number(thisCanGo[j][1])]);
+                retVal.push([Number(thisCanGo[j][0]), Number(thisCanGo[j][1])
+                    ,chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].html()]);
+
+                //console.log("hi >>> "+chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])].html())
+
             }
 
             xchangeCell(chessCells[Number(thisCanGo[j][0])][Number(thisCanGo[j][1])],chessCells[xy[0]][xy[1]]);
